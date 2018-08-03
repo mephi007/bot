@@ -8,7 +8,7 @@ chat_id = bot.get_updates()[-1].message.chat.id
 #bot.send_message(chat_id= chat_id, text="Welcome ")
 
 @bot.message_handler(commands=['start'])
-def send_welcome(message, str):
+def send_welcome(message,str):
 	str = "Howdy, how are you doing? send '/help' to know further action"
 	bot.reply_to(message, str )
 
@@ -42,5 +42,12 @@ def send_image(chat_id, photo):
 @bot.message_handler(func=lambda message: message.text == "hi")
 def handle_message(message):
 	bot.reply_to(message, "hello wazzup")
+
+@bot.message_handler(func=lambda message: message.text is not None)
+def handle_text_doc(message):
+	text = message.text
+	# print(text)
+
+	bot.reply_to(message , " khush ho jaa")
 
 bot.polling()
