@@ -1,16 +1,18 @@
 import telebot 
 import time
-#from io import BytesIO
 
+
+
+#from io import BytesIO
 token = '694896074:AAFfXqgRXygr6ZUJ02mwIKfGeTlEKuxHg0A'
 bot = telebot.TeleBot(token = token)
 chat_id = bot.get_updates()[-1].message.chat.id
 #bot.send_message(chat_id= chat_id, text="Welcome ")
 
 @bot.message_handler(commands=['start'])
-def send_welcome(message,str):
-	str = "Howdy, how are you doing? send '/help' to know further action"
-	bot.reply_to(message, str )
+def send_welcome(message):
+	#str = "Howdy, how are you doing? send '/help' to know further action"
+	bot.reply_to(message,  "Howdy, how are you doing? send '/help' to know further action")
 
 #bot = telebot.TeleBot(token = token)
 @bot.message_handler(commands = [ 'help'] )
@@ -47,7 +49,7 @@ def handle_message(message):
 def handle_text_doc(message):
 	text = message.text
 	# print(text)
-
-	bot.reply_to(message , " khush ho jaa")
+	if (text == "how are you"):
+		bot.reply_to(message , " I am fine, what about you?")
 
 bot.polling()
